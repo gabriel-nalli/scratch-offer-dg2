@@ -188,7 +188,6 @@ const InvestmentSection = () => {
                 <ul className="space-y-3 text-sm text-blue-50/90 mb-8 text-left">
                   <li className="flex items-start gap-3"><CheckIcon />Tudo do Plano Mensal incluso</li>
                   <li className="flex items-start gap-3"><CheckIcon />Economia de R$ 1.600 vs mensal</li>
-                  <li className="flex items-start gap-3"><CheckIcon />Parcelamento no cartão disponível</li>
                 </ul>
 
                 {/* Botão */}
