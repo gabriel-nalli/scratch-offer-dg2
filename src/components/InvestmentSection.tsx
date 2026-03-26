@@ -115,11 +115,11 @@ const InvestmentSection = () => {
                 {/* Preço */}
                 <div className="mb-6">
                   <div className="flex items-baseline gap-1">
-                    <span className="text-xs font-medium text-blue-200/60 mr-1">R$</span>
+                    <span className="text-xs font-bold text-blue-100/90 mr-1">R$</span>
                     <span className="text-4xl font-semibold tracking-tight text-white">2.450</span>
-                    <span className="text-sm text-blue-200/60 ml-1">/mês</span>
+                    <span className="text-sm font-bold text-blue-100/90 ml-1">/mês</span>
                   </div>
-                  <p className="text-xs text-blue-300/50 mt-1">Contrato de 3 meses · Total R$ 7.350</p>
+                  <p className="text-xs font-medium text-blue-100/90 mt-1">Contrato de 3 meses · Total R$ 7.350</p>
                 </div>
 
                 {/* Features */}
@@ -177,11 +177,11 @@ const InvestmentSection = () => {
                 {/* Preço */}
                 <div className="mb-6">
                   <div className="flex items-baseline gap-1">
-                    <span className="text-xs font-medium text-blue-200/60 mr-1">R$</span>
+                    <span className="text-xs font-bold text-blue-100/90 mr-1">R$</span>
                     <span className="text-4xl font-semibold tracking-tight text-white">5.750</span>
-                    <span className="text-sm text-blue-200/60 ml-1">total</span>
+                    <span className="text-sm font-bold text-blue-100/90 ml-1">total</span>
                   </div>
-                  <p className="text-xs text-blue-300/50 mt-1">Cobre os 3 meses completos</p>
+                  <p className="text-xs font-medium text-blue-100/90 mt-1">Cobre os 3 meses completos</p>
                 </div>
 
                 {/* Features */}
