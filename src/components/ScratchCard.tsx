@@ -73,9 +73,14 @@ const ScratchCard = ({ children, width = 340, height = 320 }: ScratchCardProps) 
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas || !containerRef.current) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+
+    // Set internal resolution to match display size
+    const rect = containerRef.current.getBoundingClientRect();
+    canvas.width = rect.width * 2;
+    canvas.height = rect.height * 2;
 
     // Metallic gradient cover
     const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
@@ -150,17 +155,15 @@ const ScratchCard = ({ children, width = 340, height = 320 }: ScratchCardProps) 
   return (
     <div
       ref={containerRef}
-      className="relative rounded-xl overflow-hidden"
+      className="relative rounded-xl overflow-hidden h-full w-full"
       style={{ maxWidth: width }}
     >
       {/* Content underneath */}
-      <div className="p-8">{children}</div>
+      <div className="p-8 h-full flex flex-col justify-between">{children}</div>
 
       {/* Canvas overlay */}
       <canvas
         ref={canvasRef}
-        width={width * 2}
-        height={height * 2}
         className={`absolute inset-0 w-full h-full cursor-crosshair rounded-xl transition-opacity duration-700 ${
           revealed ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}

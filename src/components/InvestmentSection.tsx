@@ -17,7 +17,7 @@ const InvestmentSection = () => {
 
         <div className="grid md:grid-cols-2 gap-8 justify-items-center">
           {/* Plano Mensal */}
-          <div className="gradient-card rounded-xl border-gradient-gold w-full max-w-[340px]">
+          <div className="gradient-card rounded-xl border-gradient-gold w-full max-w-[340px] h-full flex flex-col">
             <ScratchCard>
               <div className="text-center">
                 <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-4">
@@ -29,11 +29,14 @@ const InvestmentSection = () => {
                 </p>
                 <div className="space-y-2 my-6 text-sm text-secondary-foreground">
                   <p>Contrato de 3 meses</p>
-                  <p className="text-muted-foreground">Total: R$ 7.350 no fim dos 3 meses
-                    <span className="text-foreground font-semibold">R$ 7.350</span> no período
-                  </p>
+                  <p className="text-muted-foreground">Total de <span className="text-foreground font-semibold">R$ 7.350</span> no período</p>
                 </div>
-                <Button variant="gold" size="lg" className="w-full">
+                <Button 
+                  variant="gold" 
+                  size="lg" 
+                  className="w-full"
+                  onClick={() => window.open("https://wa.me/5519983046552?text=Olá! Tenho interesse no Plano Mensal da oferta.", "_blank")}
+                >
                   Quero esse plano
                 </Button>
               </div>
@@ -41,7 +44,7 @@ const InvestmentSection = () => {
           </div>
 
           {/* Plano À Vista */}
-          <div className="gradient-card rounded-xl border-gradient-gold w-full max-w-[340px] relative">
+          <div className="gradient-card rounded-xl border-gradient-gold w-full max-w-[340px] relative h-full flex flex-col">
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
               <span className="gradient-gold text-primary-foreground text-xs font-bold px-4 py-1 rounded-full">
                 MELHOR OFERTA
@@ -64,7 +67,12 @@ const InvestmentSection = () => {
                     Aceita parcelamento no cartão de crédito
                   </p>
                 </div>
-                <Button variant="gold" size="lg" className="w-full">
+                <Button 
+                  variant="gold" 
+                  size="lg" 
+                  className="w-full"
+                  onClick={() => window.open("https://wa.me/5519983046552?text=Olá! Tenho interesse no Plano À Vista da oferta.", "_blank")}
+                >
                   Quero pagar à vista
                 </Button>
               </div>
