@@ -29,7 +29,7 @@ const InvestmentSection = () => {
                 </p>
                 <div className="space-y-2 my-6 text-sm text-secondary-foreground">
                   <p>Contrato de 3 meses</p>
-                  <p className="text-muted-foreground">Total: R$ 7.350 no fim dos 3 meses
+                  <p className="text-muted-foreground">Total: R$ 7.350 no fim dos 3 meses
                     <span className="text-foreground font-semibold">R$ 7.350</span> no período
                   </p>
                 </div>
