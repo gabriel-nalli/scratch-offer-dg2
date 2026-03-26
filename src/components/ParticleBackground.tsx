@@ -9,12 +9,13 @@ const ParticleBackground = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const particleCount = 250;
-    const connectionDistance = 120;
-    const mouse = { x: null as number | null, y: null as number | null, radius: 180 };
+    let particleCount = window.innerWidth < 768 ? 70 : 250;
+    const connectionDistance = window.innerWidth < 768 ? 90 : 120;
+    const mouse = { x: null as number | null, y: null as number | null, radius: 150 };
 
     let particles: Particle[] = [];
     let animationId: number;
+    let lastWidth = window.innerWidth;
 
     class Particle {
       x: number;
@@ -25,8 +26,8 @@ const ParticleBackground = () => {
       color: string;
 
       constructor() {
-        this.x = Math.random() * canvas!.width;
-        this.y = Math.random() * canvas!.height;
+        this.x = Math.random() * window.innerWidth;
+        this.y = Math.random() * window.innerHeight;
         this.size = Math.random() * 1.5 + 0.5;
         this.speedX = (Math.random() - 0.5) * 1.2;
         this.speedY = (Math.random() - 0.5) * 1.2;
@@ -37,8 +38,8 @@ const ParticleBackground = () => {
         this.x += this.speedX;
         this.y += this.speedY;
 
-        if (this.x > canvas!.width || this.x < 0) this.speedX *= -1;
-        if (this.y > canvas!.height || this.y < 0) this.speedY *= -1;
+        if (this.x > window.innerWidth || this.x < 0) this.speedX *= -1;
+        if (this.y > window.innerHeight || this.y < 0) this.speedY *= -1;
 
         if (mouse.x !== null && mouse.y !== null) {
           const dx = mouse.x - this.x;
@@ -64,6 +65,7 @@ const ParticleBackground = () => {
 
     const createParticles = () => {
       particles = [];
+      particleCount = window.innerWidth < 768 ? 70 : 250;
       for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
       }
@@ -91,16 +93,16 @@ const ParticleBackground = () => {
 
     const animate = () => {
       ctx!.fillStyle = "#020617";
-      ctx!.fillRect(0, 0, canvas!.width, canvas!.height);
+      ctx!.fillRect(0, 0, window.innerWidth, window.innerHeight);
 
       const gradient = ctx!.createRadialGradient(
-        canvas!.width / 2, canvas!.height / 2, 0,
-        canvas!.width / 2, canvas!.height / 2, canvas!.width / 1.2
+        window.innerWidth / 2, window.innerHeight / 2, 0,
+        window.innerWidth / 2, window.innerHeight / 2, window.innerWidth / 1.2
       );
       gradient.addColorStop(0, "#0f172a");
       gradient.addColorStop(1, "#020617");
       ctx!.fillStyle = gradient;
-      ctx!.fillRect(0, 0, canvas!.width, canvas!.height);
+      ctx!.fillRect(0, 0, window.innerWidth, window.innerHeight);
 
       for (const p of particles) {
         p.update();
@@ -111,25 +113,62 @@ const ParticleBackground = () => {
     };
 
     const resize = () => {
-      canvas!.width = window.innerWidth;
-      canvas!.height = window.innerHeight;
-      createParticles();
+      const currentWidth = window.innerWidth;
+      // No Safari Mobile, rolar a tela altera a altura. Só redesenhamos se a largura mudar.
+      if (currentWidth !== lastWidth || particles.length === 0) {
+        const dpr = window.devicePixelRatio || 1;
+        canvas!.width = window.innerWidth * dpr;
+        canvas!.height = window.innerHeight * dpr;
+        ctx!.scale(dpr, dpr);
+        canvas!.style.width = `${window.innerWidth}px`;
+        canvas!.style.height = `${window.innerHeight}px`;
+        lastWidth = currentWidth;
+        createParticles();
+      } else {
+        // Apenas redimensiona sem recriar partículas se só a altura mudou sutilmente
+        const dpr = window.devicePixelRatio || 1;
+        canvas!.width = window.innerWidth * dpr;
+        canvas!.height = window.innerHeight * dpr;
+        ctx!.scale(dpr, dpr);
+        canvas!.style.width = `${window.innerWidth}px`;
+        canvas!.style.height = `${window.innerHeight}px`;
+      }
     };
 
-    const handleMouseMove = (e: MouseEvent) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
+    const handleMouseMove = (e: MouseEvent | TouchEvent) => {
+      if ('touches' in e && e.touches.length > 0) {
+        mouse.x = e.touches[0].clientX;
+        mouse.y = e.touches[0].clientY;
+      } else if ('clientX' in e) {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      }
+    };
+
+    const handleMouseLeave = () => {
+      mouse.x = null;
+      mouse.y = null;
     };
 
     window.addEventListener("resize", resize);
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleMouseMove, { passive: true });
+    window.addEventListener("touchstart", handleMouseMove, { passive: true });
+    window.addEventListener("touchend", handleMouseLeave);
+    window.addEventListener("mouseleave", handleMouseLeave);
 
+    // Initial force setup to trigger 1st paint correctly
     resize();
+    if (particles.length === 0) createParticles();
     animate();
 
     return () => {
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleMouseMove);
+      window.removeEventListener("touchstart", handleMouseMove);
+      window.removeEventListener("touchend", handleMouseLeave);
+      window.removeEventListener("mouseleave", handleMouseLeave);
       cancelAnimationFrame(animationId);
     };
   }, []);
@@ -137,7 +176,7 @@ const ParticleBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 w-full h-full -z-10"
+      className="fixed inset-0 -z-10"
       style={{ display: "block" }}
     />
   );
