@@ -17,7 +17,7 @@ const HeroSection = () => {
         </h1>
 
         <p className="text-lg md:text-xl text-muted-foreground mb-4 opacity-0 animate-fade-in-up" style={{ animationDelay: "0.5s" }}>
-          Elaborada exclusivamente para <span className="text-foreground font-semibold">Mario</span>
+          Elaborada exclusivamente para <span className="gradient-gold-text" style={{ fontFamily: "'Alfa Slab One', cursive" }}>Mario</span>
         </p>
 
         <p className="text-sm text-muted-foreground opacity-0 animate-fade-in-up" style={{ animationDelay: "0.7s" }}>
