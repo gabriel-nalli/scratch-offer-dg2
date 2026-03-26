@@ -27,12 +27,14 @@ const Deliverables = () => {
           {items.map((item, i) => (
             <div
               key={i}
-              className="gradient-card rounded-xl p-6 border-gradient-gold flex items-start gap-4"
+              className="card-neon-border"
             >
-              <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-              <p className="text-secondary-foreground leading-relaxed text-sm">
-                {item}
-              </p>
+              <div className="card-neon-content rounded-xl p-6 bg-[#020617]/40 backdrop-blur-sm flex items-start gap-4">
+                <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+                <p className="text-secondary-foreground leading-relaxed text-sm">
+                  {item}
+                </p>
+              </div>
             </div>
           ))}
         </div>

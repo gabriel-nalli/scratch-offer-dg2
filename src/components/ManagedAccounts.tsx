@@ -33,17 +33,19 @@ const ManagedAccounts = () => {
           {accounts.map((account) => (
             <div
               key={account.title}
-              className="gradient-card rounded-xl p-8 border-gradient-gold group hover:glow-gold transition-shadow duration-500"
+              className="card-neon-border group hover:glow-gold transition-shadow duration-500"
             >
-              <div className="w-12 h-12 rounded-lg gradient-gold flex items-center justify-center mb-6">
-                <account.icon className="w-6 h-6 text-primary-foreground" />
+              <div className="card-neon-content rounded-xl p-8 bg-[#020617]/40 backdrop-blur-sm">
+                <div className="w-12 h-12 rounded-lg gradient-gold flex items-center justify-center mb-6">
+                  <account.icon className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <h4 className="text-xl font-semibold text-foreground mb-3">
+                  {account.title}
+                </h4>
+                <p className="text-secondary-foreground leading-relaxed">
+                  {account.description}
+                </p>
               </div>
-              <h4 className="text-xl font-semibold text-foreground mb-3">
-                {account.title}
-              </h4>
-              <p className="text-secondary-foreground leading-relaxed">
-                {account.description}
-              </p>
             </div>
           ))}
         </div>
