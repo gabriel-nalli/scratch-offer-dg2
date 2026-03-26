@@ -10,7 +10,7 @@ const ProposalIntro = () => {
           Sobre a Proposta
         </h3>
         <p className="text-lg md:text-xl leading-relaxed text-secondary-foreground">
-          A <span className="text-primary font-semibold">Dg2.ai</span> desenvolveu esta proposta para gerenciar os anúncios pagos de duas contas estratégicas, com foco em{" "}
+          A <span className="text-foreground font-semibold">Dg2.ai</span> desenvolveu esta proposta para gerenciar os anúncios pagos de duas contas estratégicas, com foco em{" "}
           <span className="text-foreground font-medium">segmentação precisa de público e localização</span>, maximizando resultados dentro do orçamento disponível.
         </p>
       </div>
