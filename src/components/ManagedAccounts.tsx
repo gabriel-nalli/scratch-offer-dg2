@@ -10,7 +10,7 @@ const accounts = [
   },
   {
     icon: Scissors,
-    title: "Marrom Chic Mega",
+    title: "Marrom Chic Studio",
     description:
       "Perfil de salão de beleza especializado em extensões e apliques. Público segmentado e local específico — requer estratégia de anúncios direcionada com precisão geográfica e demográfica.",
   },
