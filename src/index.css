@@ -135,7 +135,7 @@
     top: -50%;
     width: 200%;
     height: 200%;
-    background: conic-gradient(from 0deg, transparent 70%, hsl(199, 89%, 58%) 100%);
+    background: conic-gradient(from 0deg, transparent 40%, rgba(30, 58, 138, 0.4) 60%, #1d4ed8 80%, #3b82f6 95%, #93c5fd 100%);
     animation: spin-border 4s linear infinite;
   }
 
@@ -143,9 +143,9 @@
     content: "";
     position: absolute;
     z-index: -1;
-    inset: 1.5px; /* espessura da borda neon */
-    background: linear-gradient(180deg, hsl(215, 30%, 8%) 0%, hsl(222, 47%, 4%) 100%);
-    border-radius: calc(0.75rem - 1.5px);
+    inset: 3px; /* espessura mais marcante da borda */
+    background: linear-gradient(180deg, hsl(215, 30%, 10%) 0%, hsl(222, 47%, 6%) 100%);
+    border-radius: calc(0.75rem - 3px);
   }
 
   .card-neon-content {
