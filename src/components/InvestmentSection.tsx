@@ -8,7 +8,7 @@ const InvestmentSection = () => {
   return (
     <section className="py-20 px-4" ref={ref}>
       <div className="max-w-5xl mx-auto text-center">
-        <h3 className="text-sm uppercase tracking-[0.2em] text-foreground font-semibold mb-2">
+        <h3 className="text-sm uppercase tracking-[0.2em] text-primary font-semibold mb-2">
           Investimento
         </h3>
         <p className="text-muted-foreground mb-12 text-lg">
@@ -29,8 +29,8 @@ const InvestmentSection = () => {
                 </p>
                 <div className="space-y-2 my-6 text-sm text-secondary-foreground">
                   <p>Contrato de 3 meses</p>
-                  <p className="text-muted-foreground">
-                    Total: <span className="text-foreground font-semibold">R$ 7.350</span> no período
+                  <p className="text-muted-foreground">Total: R$ 7.350 no fim dos 3 meses
+                    <span className="text-foreground font-semibold">R$ 7.350</span> no período
                   </p>
                 </div>
                 <Button variant="gold" size="lg" className="w-full">
@@ -72,8 +72,8 @@ const InvestmentSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default InvestmentSection;
