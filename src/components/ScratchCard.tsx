@@ -79,11 +79,11 @@ const ScratchCard = ({ children, width = 340, height = 320 }: ScratchCardProps) 
 
     // Metallic gradient cover
     const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-    gradient.addColorStop(0, "#8a8a8a");
-    gradient.addColorStop(0.3, "#c0c0c0");
-    gradient.addColorStop(0.5, "#d4af37");
-    gradient.addColorStop(0.7, "#c0c0c0");
-    gradient.addColorStop(1, "#8a8a8a");
+    gradient.addColorStop(0, "#2a1a3e");
+    gradient.addColorStop(0.3, "#4a2d7a");
+    gradient.addColorStop(0.5, "#7c3aed");
+    gradient.addColorStop(0.7, "#4a2d7a");
+    gradient.addColorStop(1, "#2a1a3e");
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
